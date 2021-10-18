@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 const Task = (props) => {
   return (
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginRight: 15
   },
-  itemtext: {
+  itemText: {
     maxWidth: '80%'
   },
   circular: {
