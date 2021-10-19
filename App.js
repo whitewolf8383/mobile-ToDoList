@@ -12,10 +12,16 @@ export default function App() {
     setTask(null);
   }
 
-  const completeTask = (index) => {
-    let itemsCopy = [...taskItems];
-    itemsCopy.splice(index, 1);
-    setTaskItems(itemsCopy)
+  const deleteTask = (index) => {
+    let tasksCopy = [...taskItems];
+    tasksCopy.splice(index, 1);
+    setTaskItems(tasksCopy)
+  }
+
+  const updateTask = (index, updatedText) => {
+    let tasksCopy = [...taskItems];
+    tasksCopy[index] = updatedText;
+    setTaskItems(tasksCopy)
   }
 
   return (
@@ -32,9 +38,12 @@ export default function App() {
             {
               taskItems.map((item, index) => {
                 return (
-                  <TouchableOpacity key={index}  onPress={() => completeTask(index)}>
-                    <Task text={item} /> 
-                  </TouchableOpacity>
+                  <Task 
+                    key={index}
+                    text={item}
+                    deleteTask={() => deleteTask(index)} 
+                    updateTask={() => updateTask(index, 'updatedText')}
+                  /> 
                 )
               })
             }
@@ -42,11 +51,17 @@ export default function App() {
         </View>
       </ScrollView>
 
+      {/* Add new task */}
       <KeyboardAvoidingView 
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={styles.writeTaskWrapper}
       >
-        <TextInput style={styles.input} placeholder={'Write a task'} value={task} onChangeText={text => setTask(text)} />
+        <TextInput 
+          style={styles.input}
+          placeholder={'Write a task'} 
+          value={task} 
+          onChangeText={text => setTask(text)} 
+        />
         <TouchableOpacity onPress={() => handleAddTask()}>
           <View style={styles.addWrapper}>
             <Text>+</Text>
