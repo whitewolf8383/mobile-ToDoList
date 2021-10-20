@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
-import { KeyboardAvoidingView, StyleSheet, Text, View, TextInput, TouchableOpacity, Keyboard, ScrollView } from 'react-native';
+import { KeyboardAvoidingView, StyleSheet, Text, View, 
+  TextInput, TouchableOpacity, Keyboard, ScrollView } 
+  from 'react-native';
 import Task from './components/Tasks';
 
 export default function App() {
@@ -12,13 +14,13 @@ export default function App() {
     setTask(null);
   }
 
-  const deleteTask = (index) => {
+  const handleDeleteTask = (index) => {
     let tasksCopy = [...taskItems];
     tasksCopy.splice(index, 1);
     setTaskItems(tasksCopy)
   }
 
-  const updateTask = (index, updatedText) => {
+  const handleUpdateTask = (index, updatedText) => {
     let tasksCopy = [...taskItems];
     tasksCopy[index] = updatedText;
     setTaskItems(tasksCopy)
@@ -41,8 +43,8 @@ export default function App() {
                   <Task 
                     key={index}
                     text={item}
-                    deleteTask={() => deleteTask(index)} 
-                    updateTask={() => updateTask(index, 'updatedText')}
+                    deleteTask={() => handleDeleteTask(index)} 
+                    updateTask={() => handleUpdateTask(index, 'updatedText')}
                   /> 
                 )
               })
@@ -53,7 +55,7 @@ export default function App() {
 
       {/* Add new task */}
       <KeyboardAvoidingView 
-        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={styles.writeTaskWrapper}
       >
         <TextInput 

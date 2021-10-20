@@ -1,22 +1,24 @@
 import React, {useState} from 'react';
-import { View, Text, StyleSheet, Button, TouchableHighlight } from 'react-native';
+import { View, Text, StyleSheet, Button, TouchableHighlight, Pressable } from 'react-native';
 
 const Tasks = (props) => {
-  const [markCompleted, setMarkedComplete] = useState();
+  const [textLine, setTextLine] = useState('none');
 
-  const completeTask = () => {
-    
+  const handleTextLine = () => {
+    textLine === 'none' ? setTextLine('line-through') : setTextLine('none');
   }
 
   return (
-    <View style={styles.item}>
+    <Pressable onPress={() => handleTextLine()} style={styles.item}>
       <View style={styles.itemLeft}>
         <Text 
-          style={props.currentStyles}
+          style={{
+            textDecorationLine: textLine
+          }}
         >{props.text}</Text>
       </View>
       <TouchableHighlight
-        style={styles.btnStyle}
+        style={{marginLeft: -20}}
         activeOpacity={0.5}
         underlayColor='#0c8df3'
       >
@@ -37,16 +39,14 @@ const Tasks = (props) => {
           onPress={props.deleteTask}
         />
       </TouchableHighlight>
-      
-    </View>
+    </Pressable>
   )
 }
 
 const styles = StyleSheet.create({
   item: {
     backgroundColor: '#FFF',
-    padding: 15,
-    borderRadius: 10,
+    padding: 7,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -57,9 +57,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexWrap: 'wrap',
     width: '70%'
-  },
-  btnStyle: {
-    marginLeft: -20
   }
 });
 
