@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
-import { View, Text, StyleSheet, Button, TouchableHighlight, Pressable } from 'react-native';
+import { View, Text, StyleSheet, Button, TouchableHighlight, 
+  Pressable } from 'react-native';
 
 const Tasks = (props) => {
   const [textLine, setTextLine] = useState('none');
 
+  {/*Function to mark tasks Complete */}
   const handleTextLine = () => {
     textLine === 'none' ? setTextLine('line-through') : setTextLine('none');
   }
