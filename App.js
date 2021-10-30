@@ -3,7 +3,7 @@ import { KeyboardAvoidingView, StyleSheet, Text, View,
   TextInput, TouchableOpacity, Keyboard, ScrollView, 
   Modal, Button } 
   from 'react-native';
-
+import Navigator from './routes/homeStack';
 import Task from './components/Tasks';
 
 let index = 0;
@@ -42,6 +42,7 @@ export default function App() {
   }
 
   return (
+    <NavigationContainer>
     <View style={styles.container}>
       <ScrollView
         contentContainerStyle={{
@@ -113,6 +114,7 @@ export default function App() {
       </KeyboardAvoidingView>
       
     </View>
+    </NavigationContainer>
   );
 }
 

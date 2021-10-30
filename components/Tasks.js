@@ -11,37 +11,45 @@ const Tasks = (props) => {
   }
 
   return (
-    <Pressable onPress={() => handleTextLine()} style={styles.item}>
-      <View style={styles.itemLeft}>
-        <Text 
-          style={{
-            textDecorationLine: textLine
-          }}
-        >{props.text}</Text>
-      </View>
-      <TouchableHighlight
-        style={{marginLeft: -20}}
-        activeOpacity={0.5}
-        underlayColor='#0c8df3'
-      >
-        <Button
-          accessibilityLabel='Update task button'
-          title='Update'
-          onPress={props.updateTask}
-        />
-      </TouchableHighlight>
-      <TouchableHighlight
-        activeOpacity={0.5}
-        underlayColor='#ff0009'
-      >
-        <Button 
-          color='#c13e41'
-          accessibilityLabel='Delete task button'
-          title='X'
-          onPress={props.deleteTask}
-        />
-      </TouchableHighlight>
-    </Pressable>
+      <Pressable onPress={() => handleTextLine()} style={styles.item}>
+        <View style={styles.itemLeft}>
+          <Text 
+            style={{
+              textDecorationLine: textLine
+            }}
+          >{props.text}{'\n'}
+            <Text 
+            style={{
+              fontSize: 10,
+              textAlign: 'left'
+            }}
+          >Tap to mark complete.</Text>
+          </Text>
+          
+        </View>
+        <TouchableHighlight
+          style={{marginLeft: -20}}
+          activeOpacity={0.5}
+          underlayColor='#0c8df3'
+        >
+          <Button
+            accessibilityLabel='Update task button'
+            title='Update'
+            onPress={props.updateTask}
+          />
+        </TouchableHighlight>
+        <TouchableHighlight
+          activeOpacity={0.5}
+          underlayColor='#ff0009'
+        >
+          <Button 
+            color='#c13e41'
+            accessibilityLabel='Delete task button'
+            title='X'
+            onPress={props.deleteTask}
+          />
+        </TouchableHighlight>
+      </Pressable>
   )
 }
 
